@@ -41,7 +41,7 @@ and open the template in the editor.
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Acciones</f:facet>
-                                        <h:commandButton class="btn btn-success" value="Solicitar Pedido"  a:data-toggle="modal"  a:data-target="#exampleModalCenter">
+                                        <h:commandButton class="btn btn-success" value="Solicitar Pedido"   a:data-toggle="modal" action="#{inventarioBEAN.buscaProductoID(producto.codigo)}" a:data-target="#exampleModalLong">
                                             <f:ajax render="editarPedido"/>
                                         </h:commandButton>
                                     </h:column>
@@ -51,7 +51,46 @@ and open the template in the editor.
                     </div>
                 </div>
             </div> 
-     
+
+
+
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Solicitar Pedido</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="modal-body" name="modal">
+                            <div class="row">
+                                <div class="card card-body">
+                                    <h:form id="editarPedido"><br></br>
+                                        <h5 class="card-title bg-white">Solicitar Pedido</h5>
+                                        <div class="form-group card-header bg-primary">
+                                            <label class="text-center" for="codigo">Nombre</label>
+                                            <h:inputText class="form-control" a:disabled="disabled" id="nombre"  value="#{inventarioBEAN.auxproducto.nombre}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-center" for="cantidad">Cantidad</label>
+                                            <h:inputText class="form-control" id="cantidad"  value="#{inventarioBEAN.cantida}"/>
+                                        </div>                                                                                                     
+                                        <br></br>
+                                        <h:commandButton class="btn btn-success btn-block" value="Pedir" action="#{inventarioBEAN.actualizarStock()}" >
+                                            <f:ajax render="@all"  execute="editarPedido"/>
+                                        </h:commandButton>
+                                    </h:form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
         </ui:define>
     </ui:composition>
 </html>

@@ -33,9 +33,9 @@ public class Proveedor1Reset {
     @GET
     @Path("/compra")
     @Produces("application/json")
-    public String retiro(@QueryParam("id") String id, @QueryParam("cantidad") double cantidad) {
+    public String retiro(@QueryParam("codigo") String codigo, @QueryParam("cantidad") double cantidad) {
         try {
-            producto = buscaProductoID(id);
+            producto = buscaProductoID(codigo);
             if (cantidad > producto.getStock()) {
                 return "No disponemos de la cantidad solicitada";
             } else {
@@ -51,9 +51,9 @@ public class Proveedor1Reset {
 
     }
 
-    public Producto buscaProductoID(String id) {
+    public Producto buscaProductoID(String codigo) {
         try {
-            producto = productoON.buscarClienteId(id);
+            producto = productoON.buscarClienteId(codigo);
         } catch (Exception ex) {
             Logger.getLogger(ProductoBEAN.class.getName()).log(Level.SEVERE, null, ex);
         }

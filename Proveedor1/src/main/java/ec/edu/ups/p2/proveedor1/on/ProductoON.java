@@ -49,14 +49,16 @@ public class ProductoON {
         return null;
     }
 
-    public Producto buscarClienteId(String id) {
+    public Producto buscarClienteId(String codigp) {
         try {
-            return productoDAO.findByID(id);
+            return productoDAO.findByID(codigp);
         } catch (Exception ex) {
             Logger.getLogger(ProductoON.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
+    
+    
 
     public void actualizarStockProducto(Producto producto) {
         try {

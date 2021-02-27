@@ -49,9 +49,9 @@ public class ProductoON {
         return null;
     }
 
-    public Producto buscarClienteId(String id) {
+    public Producto buscarClienteId(String codigo) {
         try {
-            return productoDAO.findByID(id);
+            return productoDAO.findByID(codigo);
         } catch (Exception ex) {
             Logger.getLogger(ProductoON.class.getName()).log(Level.SEVERE, null, ex);
         }

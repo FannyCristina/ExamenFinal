@@ -51,10 +51,10 @@ public class ProductoDAO {
 
     }
 
-    public Producto findByID(String id) throws Exception {
+    public Producto findByID(String codigo) throws Exception {
         try {
-            Query q = em.createNamedQuery("Producto.findById");
-            q.setParameter("id", Integer.parseInt(id));
+            Query q = em.createNamedQuery("Producto.findByCodigo");
+            q.setParameter("codigo", codigo);
             return (Producto) q.getSingleResult();
         } catch (Exception e) {
             throw new Exception("Erro buscar por  ID " + e.getMessage());
